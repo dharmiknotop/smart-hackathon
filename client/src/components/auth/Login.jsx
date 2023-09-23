@@ -29,8 +29,7 @@ const SignIn = () => {
       await axios.post(
         "/api/user/login",
         {
-          name: formData.name,
-          password: formData.password,
+          ...formData,
         },
         {
           withCredentials: true,

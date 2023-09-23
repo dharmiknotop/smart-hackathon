@@ -13,9 +13,18 @@ const app = express();
 //applying middlewares for incoming request
 
 app.use(bodyParser.json());
-app.use(cors());
+app.use(
+  cors({
+    credentials: true,
+    origin: ["http://localhost:3000"],
+  })
+);
 app.use(cookieParser());
 
 // Route Imports
+
+import user from "./routes/userRoute.js";
+
+app.use("/api/user/", user);
 
 export default app;

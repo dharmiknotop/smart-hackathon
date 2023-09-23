@@ -27,12 +27,13 @@ const SignIn = () => {
       error: "",
     });
 
+    console.log(formData);
+
     try {
       await axios.post(
-        "/api/user/login",
+        "http://localhost:8081/api/user/register",
         {
-          name: formData.name,
-          password: formData.password,
+          ...formData,
         },
         {
           withCredentials: true,
@@ -70,7 +71,12 @@ const SignIn = () => {
               label="Enter your name"
               value={formData.name}
               onChange={(e) => {
-                setFormData(e.target.value);
+                setFormData({
+                  ...formData,
+                  name: e.target.value,
+                });
+
+                console.log(e.target.value);
               }}
             />
           </div>
@@ -78,9 +84,12 @@ const SignIn = () => {
             <Input
               color="teal"
               label="Enter your password"
-              value={formData.name}
+              value={formData.password}
               onChange={(e) => {
-                setFormData(e.target.value);
+                setFormData({
+                  ...formData,
+                  password: e.target.value,
+                });
               }}
             />
           </div>
@@ -106,10 +115,13 @@ const SignIn = () => {
             <div className="relative w-full mt-6">
               <Textarea
                 color="teal"
-                value={formData.name}
+                value={formData.address}
                 label="Enter your address"
                 onChange={(e) => {
-                  setFormData(e.target.value);
+                  setFormData({
+                    ...formData,
+                    address: e.target.value,
+                  });
                 }}
               />
             </div>
