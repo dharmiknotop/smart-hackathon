@@ -12,6 +12,7 @@ const SignIn = () => {
     password: "",
     email: "",
     userType: "user",
+    address: "",
   });
 
   const [loading, setLoading] = useState({
@@ -74,6 +75,21 @@ const SignIn = () => {
                 setFormData({
                   ...formData,
                   name: e.target.value,
+                });
+
+                console.log(e.target.value);
+              }}
+            />
+          </div>
+          <div className="relative h-11 w-full mt-6">
+            <Input
+              color="teal"
+              label="Enter your email"
+              value={formData.email}
+              onChange={(e) => {
+                setFormData({
+                  ...formData,
+                  email: e.target.value,
                 });
 
                 console.log(e.target.value);

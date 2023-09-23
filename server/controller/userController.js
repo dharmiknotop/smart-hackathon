@@ -5,12 +5,12 @@ import { createCookie } from "../utils/createCookie.js";
 
 export const validateUser = async function (req, res) {
   try {
-    const { name } = req.payload;
+    const { email } = req.payload;
 
     // check does user exist in User
 
     const userExists = await userModal.findOne({
-      name,
+      email,
     });
 
     if (!userExists) {
@@ -57,7 +57,8 @@ export const register = async function (req, res) {
     const token = jwt.sign(
       {
         exp: Math.floor(Date.now() / 1000) + 60 * 60 * 24 * 30,
-        name,
+        id: newUser._id,
+        email,
       },
       process.env.SECRET
     );
@@ -98,7 +99,8 @@ export const login = async function (req, res) {
 
     const token = jwt.sign(
       {
-        name,
+        id: isValidUser._id,
+        email,
       },
       process.env.SECRET
     );

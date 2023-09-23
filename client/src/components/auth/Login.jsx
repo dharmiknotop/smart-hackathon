@@ -27,7 +27,7 @@ const SignIn = () => {
 
     try {
       await axios.post(
-        "/api/user/login",
+        "http://localhost:8081/api/user/login",
         {
           ...formData,
         },
@@ -79,10 +79,13 @@ const SignIn = () => {
           <div className="relative h-11 w-full mt-6">
             <Input
               color="teal"
-              label="Enter your name"
-              value={formData.name}
+              label="Enter your email"
+              value={formData.email}
               onChange={(e) => {
-                setFormData(e.target.value);
+                setFormData({
+                  ...formData,
+                  email: e.target.value,
+                });
               }}
             />
           </div>
@@ -90,9 +93,12 @@ const SignIn = () => {
             <Input
               color="teal"
               label="Enter your password"
-              value={formData.name}
+              value={formData.password}
               onChange={(e) => {
-                setFormData(e.target.value);
+                setFormData({
+                  ...formData,
+                  password: e.target.value,
+                });
               }}
             />
           </div>
