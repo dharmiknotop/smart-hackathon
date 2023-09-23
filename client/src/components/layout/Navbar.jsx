@@ -1,4 +1,24 @@
+import axios from "axios";
+import { useNavigate } from "react-router-dom";
 export default function Header() {
+  const navigate = useNavigate();
+
+  const logOut = async () => {
+    try {
+      await axios.post(
+        "http://localhost:8081/api/user/logout",
+        {},
+        {
+          withCredentials: true,
+        }
+      );
+
+      navigate("/login");
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
   return (
     <header className="bg-white fixed top-0 w-full shadow-md z-50">
       <nav className="container mx-auto px-6 py-5">
@@ -31,6 +51,15 @@ export default function Header() {
                 Garbage full
               </span>
             </label>
+
+            <div
+              className="text-red-800 cursor-pointer"
+              onClick={() => {
+                logOut();
+              }}
+            >
+              Log out
+            </div>
           </div>
           <div className="md:hidden flex items-center">
             <button className="text-gray-800 focus:outline-none">sdf</button>

@@ -8,6 +8,7 @@ const userSchema = new Schema({
   email: String,
   address: String,
   userType: String,
+  isGarbageFull: { type: Boolean, default: false },
 });
 
-export default mongoose.model("developer_panel_users", userSchema);
+export default mongoose.model("users", userSchema);

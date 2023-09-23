@@ -41,7 +41,11 @@ const SignIn = () => {
         }
       );
 
-      navigate("/store");
+      if (formData.userType === "worker") {
+        navigate("/worker/dashboard");
+      } else {
+        navigate("/");
+      }
 
       setLoading({
         loading: false,

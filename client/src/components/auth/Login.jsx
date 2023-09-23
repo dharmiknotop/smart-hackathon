@@ -26,7 +26,7 @@ const SignIn = () => {
     });
 
     try {
-      await axios.post(
+      const { data } = await axios.post(
         "http://localhost:8081/api/user/login",
         {
           ...formData,
@@ -36,7 +36,11 @@ const SignIn = () => {
         }
       );
 
-      navigate("/store");
+      if (data.userType === "worker") {
+        navigate("/worker/dashboard");
+      } else {
+        navigate("/");
+      }
 
       setLoading({
         loading: false,

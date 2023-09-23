@@ -17,7 +17,9 @@ export const validateUser = async function (req, res) {
       return res.status(400).json({ error: `Name does not exists ` });
     }
 
-    return res.status(200).json({ success: "Authenticated user" });
+    return res
+      .status(200)
+      .json({ success: "Authenticated user", data: userExists });
   } catch (error) {
     console.log(error);
 
@@ -107,7 +109,9 @@ export const login = async function (req, res) {
 
     createCookie(res, token);
 
-    return res.status(200).json({ success: "successfully logged in" });
+    return res
+      .status(200)
+      .json({ success: "successfully logged in", data: isValidUser });
   } catch (error) {
     console.log(error);
     return res.status(400).json({ error: error.message });

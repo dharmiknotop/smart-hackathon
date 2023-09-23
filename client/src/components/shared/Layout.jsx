@@ -9,7 +9,8 @@ export default function Layout() {
 
   const validateUser = async () => {
     try {
-      await axios.post(
+      console.log("wait");
+      const { data } = await axios.post(
         "http://localhost:8081/api/user/validateUser",
         {},
         {
@@ -17,7 +18,11 @@ export default function Layout() {
         }
       );
 
-      setIsAuthenticated(true);
+      if (data.data.userType === "user") {
+        setIsAuthenticated(true);
+      } else {
+        setIsAuthenticated(false);
+      }
     } catch (error) {
       console.log(error);
       setIsAuthenticated(false);
