@@ -6,7 +6,7 @@ export default function Header() {
   const logOut = async () => {
     try {
       await axios.post(
-        "http://localhost:8081/api/user/logout",
+        "/api/user/logout",
         {},
         {
           withCredentials: true,
@@ -23,8 +23,8 @@ export default function Header() {
     <header className="bg-white fixed top-0 w-full shadow-md z-50">
       <nav className="container mx-auto px-6 py-5">
         <div className="flex justify-between items-center">
-          <a href="#" className="text-2xl font-bold text-gray-800">
-            MyWebsite
+          <a href="#" className="text-2xl font-bold text-emerald-500">
+            Eco Experts
           </a>
           <div className="hidden md:flex items-center space-x-10">
             <a href="#" className="text-gray-800 hover:text-blue-600">

@@ -5,6 +5,8 @@ import Login from "./components/auth/Login";
 import SignIn from "./components/auth/Signin";
 import Layout from "./components/shared/Layout";
 import Home from "./components/Home";
+import LayoutForWorker from "./components/shared/LayoutForWorker";
+import WorkerDashboard from "./components/dashboard/WorkerDashboard";
 
 function App() {
   return (
@@ -13,12 +15,10 @@ function App() {
         <Routes>
           <Route path="/" element={<Layout />}>
             <Route index element={<Home />} />
-            {/* <Route path="/store" element={<Store />} />
-            <Route path="/store/:id" element={<StoreDetail />} />
-            <Route path="/store/settings/:id" element={<StoreSettings />} />
-            <Route path="/offer/list/:id" element={<OfferList />} />
-            <Route path="/offer/list/edit/:id" element={<EditOffer />} />
-            <Route path="/offer/:id" element={<OfferDetails />} /> */}
+          </Route>
+
+          <Route path="/worker" element={<LayoutForWorker />}>
+            <Route path="/worker/dashboard" element={<WorkerDashboard />} />
           </Route>
           <Route path="/login" element={<Login />} />
           <Route path="/register" element={<SignIn />} />

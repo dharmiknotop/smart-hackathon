@@ -32,7 +32,7 @@ const SignIn = () => {
 
     try {
       await axios.post(
-        "http://localhost:8081/api/user/register",
+        "/api/user/register",
         {
           ...formData,
         },

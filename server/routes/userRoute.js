@@ -4,6 +4,7 @@ import {
   register,
   logout,
   validateUser,
+  getAllUsers,
 } from "../controller/userController.js";
 import verifyJwt from "../utils/verifyToken.js";
 
@@ -13,5 +14,6 @@ router.route("/validateUser").post(verifyJwt, validateUser);
 router.route("/register").post(register);
 router.route("/login").post(login);
 router.route("/logout").post(logout);
+router.route("/getAllUsers").get(getAllUsers);
 
 export default router;

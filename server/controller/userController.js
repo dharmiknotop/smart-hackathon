@@ -128,3 +128,21 @@ export const logout = async function (req, res) {
     return res.status(400).json({ error: error.message });
   }
 };
+
+export const getAllUsers = async function (req, res) {
+  try {
+    // check does user exist in User
+
+    const user = await userModal.find({});
+
+    if (!user) {
+      return res.status(400).json({ error: "No user found" });
+    }
+
+    return res
+      .status(200)
+      .json({ success: "successfully logged in", data: user });
+  } catch (error) {
+    return res.status(400).json({ error: error.message });
+  }
+};

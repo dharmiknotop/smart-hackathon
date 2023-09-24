@@ -13,6 +13,7 @@ const config = withMT({
   theme: {
     colors: {
       emerald: { ...color.emerald },
+      slate: { ...color.slate },
     },
     extend: {
       backgroundImage: {
