@@ -8,7 +8,7 @@ import Home from "./components/Home";
 import LayoutForWorker from "./components/shared/LayoutForWorker";
 import LayoutForAdmin from "./components/shared/LayoutForAdmin";
 import WorkerDashboard from "./components/dashboard/WorkerDashboard";
-import AdminUserSection from "./components/adminDashboard/usersSection";
+import AdminUserSection from "./components/adminDashboard/UsersSection";
 import ContactUsMessage from "./components/adminDashboard/ContactUsMessage";
 
 function App() {

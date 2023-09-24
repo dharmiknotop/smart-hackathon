@@ -148,6 +148,32 @@ export const getAllUsers = async function (req, res) {
   }
 };
 
+export const getUserById = async function (req, res) {
+  try {
+    const { email } = req.payload;
+
+    console.log(req.payload);
+
+    // check does user exist in User
+
+    const userExists = await userModal.findOne({
+      email,
+    });
+
+    if (!userExists) {
+      return res.status(400).json({ error: `Name does not exists ` });
+    }
+
+    return res
+      .status(200)
+      .json({ success: "Authenticated user", data: userExists });
+  } catch (error) {
+    console.log(error);
+
+    return res.status(400).json({ error: error.message });
+  }
+};
+
 export const updateStatus = async function (req, res) {
   try {
     const { id, item } = req.body;
