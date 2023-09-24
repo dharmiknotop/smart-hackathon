@@ -40,6 +40,8 @@ const SignIn = () => {
 
       if (data.data.userType === "worker") {
         navigate("/worker/dashboard");
+      } else if (data.data.userType === "admin") {
+        navigate("/admin/dashboard/users");
       } else {
         navigate("/");
       }

@@ -2,7 +2,7 @@ import { useEffect } from "react";
 import { Navigate, Outlet } from "react-router-dom";
 import { useState } from "react";
 import axios from "axios";
-import SideBar from "../layout/SideBar";
+import AdminSidebar from "../layout/AdminSideBar";
 
 export default function LayoutForAdmin() {
   const [isAuthenticated, setIsAuthenticated] = useState(true);
@@ -36,7 +36,7 @@ export default function LayoutForAdmin() {
 
   return (
     <div className="bg-neutral-100 h-screen w-screen overflow-hidden flex flex-row">
-      <SideBar />
+      <AdminSidebar />
       <div className="flex flex-col flex-1">
         {isAuthenticated ? <Outlet /> : <Navigate to="/login" />}
       </div>

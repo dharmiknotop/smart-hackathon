@@ -26,11 +26,9 @@ const Home = () => {
       error: "",
     });
 
-    console.log(formData);
-
     try {
-      await axios.post(
-        "/api/user/contactUs",
+      const { data } = await axios.post(
+        "http://localhost:8081/api/user/createContactUs",
         {
           ...formData,
         },
@@ -38,16 +36,11 @@ const Home = () => {
           withCredentials: true,
         }
       );
-
-      if (formData.userType === "worker") {
-        navigate("/worker/dashboard");
-      } else {
-        navigate("/");
-      }
+      console.log(data);
 
       setLoading({
         loading: false,
-        success: "Successfully logged in",
+        success: data?.success,
         error: "",
       });
     } catch (error) {
@@ -295,12 +288,12 @@ const Home = () => {
           <div className="relative w-full mt-6">
             <Textarea
               color="teal"
-              value={formData.address}
-              label="Enter your address"
+              value={formData.message}
+              label="Enter your message"
               onChange={(e) => {
                 setFormData({
                   ...formData,
-                  address: e.target.value,
+                  message: e.target.value,
                 });
               }}
             />
@@ -309,6 +302,12 @@ const Home = () => {
           {!loading.loading && loading.error !== "" && (
             <div className="text-red-400 flex justify-center my-3">
               {loading.error}
+            </div>
+          )}
+
+          {!loading.loading && loading.success !== "" && (
+            <div className="text-green-400 flex justify-center my-3">
+              {loading.success}
             </div>
           )}
 

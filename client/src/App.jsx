@@ -9,6 +9,7 @@ import LayoutForWorker from "./components/shared/LayoutForWorker";
 import LayoutForAdmin from "./components/shared/LayoutForAdmin";
 import WorkerDashboard from "./components/dashboard/WorkerDashboard";
 import AdminUserSection from "./components/adminDashboard/usersSection";
+import ContactUsMessage from "./components/adminDashboard/ContactUsMessage";
 
 function App() {
   return (
@@ -24,7 +25,14 @@ function App() {
           </Route>
 
           <Route path="/admin" element={<LayoutForAdmin />}>
-            <Route path="/admin/dashboard" element={<AdminUserSection />} />
+            <Route
+              path="/admin/dashboard/users"
+              element={<AdminUserSection />}
+            />
+            <Route
+              path="/admin/dashboard/contactus"
+              element={<ContactUsMessage />}
+            />
           </Route>
 
           <Route path="/login" element={<Login />} />

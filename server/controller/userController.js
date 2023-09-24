@@ -2,6 +2,7 @@ import userModal from "../modal/userModal.js";
 import bcrypt from "bcryptjs";
 import jwt from "jsonwebtoken";
 import { createCookie } from "../utils/createCookie.js";
+import contactUsModal from "../modal/contactUsModal.js";
 
 export const validateUser = async function (req, res) {
   try {
@@ -171,6 +172,22 @@ export const updateStatus = async function (req, res) {
     return res
       .status(200)
       .json({ success: "successfully logged in", data: user });
+  } catch (error) {
+    return res.status(400).json({ error: error.message });
+  }
+};
+
+export const createContactUs = async function (req, res) {
+  try {
+    const { name, email, message } = req.body;
+
+    const data = await contactUsModal.create({
+      name,
+      email,
+      message,
+    });
+
+    return res.status(200).json({ success: "Message sent successfully", data });
   } catch (error) {
     return res.status(400).json({ error: error.message });
   }

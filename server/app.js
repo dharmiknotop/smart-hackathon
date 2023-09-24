@@ -30,8 +30,10 @@ app.use(cookieParser());
 // Route Imports
 
 import user from "./routes/userRoute.js";
+import admin from "./routes/adminRoute.js";
 
 app.use("/api/user/", user);
+app.use("/api/admin/", admin);
 
 app.use("/*", async (_req, res, _next) => {
   return res

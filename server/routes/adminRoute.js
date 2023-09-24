@@ -4,6 +4,6 @@ import verifyJwt from "../utils/verifyToken.js";
 
 const router = express.Router();
 
-router.route("/getAllContactUs").post(verifyJwt, contactUs);
+router.route("/getAllContactUs").post(contactUs);
 
 export default router;

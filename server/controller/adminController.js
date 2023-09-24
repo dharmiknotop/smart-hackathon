@@ -1,7 +1,7 @@
-import contactUs from "../modal/contactUsModal.js";
-export const validateUser = async function (req, res) {
+import contactUsModal from "../modal/contactUsModal.js";
+export const contactUs = async function (req, res) {
   try {
-    const messages = await contactUs.find({});
+    const messages = await contactUsModal.find({});
 
     return res
       .status(200)
