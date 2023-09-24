@@ -3,7 +3,7 @@ import { Fragment, useEffect, useState } from "react";
 
 import { Option, Select } from "@material-tailwind/react";
 
-const WorkerDashboard = () => {
+const AdminUserSection = () => {
   const [loading, setLoading] = useState({
     loading: false,
     success: "",
@@ -232,4 +232,4 @@ const WorkerDashboard = () => {
   );
 };
 
-export default WorkerDashboard;
+export default AdminUserSection;

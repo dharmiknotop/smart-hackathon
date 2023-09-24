@@ -146,3 +146,32 @@ export const getAllUsers = async function (req, res) {
     return res.status(400).json({ error: error.message });
   }
 };
+
+export const updateStatus = async function (req, res) {
+  try {
+    const { id, item } = req.body;
+
+    // check does user exist in User
+
+    const insertData = {
+      $set: {
+        ...item,
+        isGarbageFull: !item.isGarbageFull,
+      },
+    };
+
+    const user = await userModal.updateOne({ _id: id }, insertData, {
+      upsert: true,
+    });
+
+    if (!user) {
+      return res.status(400).json({ error: "No user found" });
+    }
+
+    return res
+      .status(200)
+      .json({ success: "successfully logged in", data: user });
+  } catch (error) {
+    return res.status(400).json({ error: error.message });
+  }
+};

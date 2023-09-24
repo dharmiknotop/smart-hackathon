@@ -4,7 +4,7 @@ import { useState } from "react";
 import axios from "axios";
 import SideBar from "../layout/SideBar";
 
-export default function LayoutForWorker() {
+export default function LayoutForAdmin() {
   const [isAuthenticated, setIsAuthenticated] = useState(true);
 
   const validateUser = async () => {
@@ -19,7 +19,7 @@ export default function LayoutForWorker() {
 
       console.log(data);
 
-      if (data.data.userType === "worker") {
+      if (data.data.userType === "admin") {
         setIsAuthenticated(true);
       } else {
         setIsAuthenticated(false);

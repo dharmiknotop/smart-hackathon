@@ -36,7 +36,9 @@ const SignIn = () => {
         }
       );
 
-      if (data.userType === "worker") {
+      console.log(data);
+
+      if (data.data.userType === "worker") {
         navigate("/worker/dashboard");
       } else {
         navigate("/");
